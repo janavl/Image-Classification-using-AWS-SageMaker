@@ -49,7 +49,7 @@ Screenshot of final training job with optimal hyperparameters:
 ![standards image](final_training_job_optimal_parameters.png)
 
 Screenshot of log metrics during final training job 
-![standards image](final_training_job_optimal_log_metrics.png)
+![standards image](final_training_job_log_metrics.png)
 
 ## Debugging and Profiling
 **Give an overview of how you performed model debugging and profiling in Sagemaker:**
@@ -69,6 +69,7 @@ After specifying the rules, I passed them to the estimator.
 
 ### Results
 **What are the results/insights did you get by profiling/debugging your model?**
+
 The most triggered rule in the profiler report is the GPUMemoryIncrease. Looking at the Debugger output in Studio, we can see that it suggests to choose a larger instance type with more memory. The second most triggered rule is LowGPUUtilization. On the inisights tab in Studio, it is suggested to check for bottlenecks, minimize blocking calls, change distributed training strategy, increase batch-size.
 
 ![standards image](profiler_insights.png)
@@ -81,7 +82,7 @@ Regarding the Debugger rules: there are no issues found with respect to loss not
 
 To query the endpoint, we need the endpoint name. If the predictor object is still active in your notebook you can simply run predictor.predict(). If you no longer have access the predictor object because you deployed the end point a while ago, you can invoke it using boto3. Make sure that your inference data (the images) are resized so they all have the same size. An example of how to resize can be found in train_model.py.
 
-**TODO** Remember to provide a screenshot of the deployed active endpoint in Sagemaker.
+![standards image](endpoint.png)
 
 ## Standout Suggestions
 **TODO (Optional):** This is where you can provide information about any standout suggestions that you have attempted.
